@@ -72,14 +72,14 @@ public class WitnessController {
     return this.manager.getWitnessScheduleStore().getActiveWitnesses();
   }
 
-  public void setActiveWitnesses(List<ByteString> addresses) {
-    this.manager.getWitnessScheduleStore().saveActiveWitnesses(addresses);
-  }
-
   public void addWitness(ByteString address) {
     List<ByteString> l = getActiveWitnesses();
     l.add(address);
     setActiveWitnesses(l);
+  }
+  
+  public void setActiveWitnesses(List<ByteString> addresses) {
+    this.manager.getWitnessScheduleStore().saveActiveWitnesses(addresses);
   }
 
   public List<ByteString> getCurrentShuffledWitnesses() {
