@@ -28,14 +28,14 @@ public class SafeMessageMap {
     }
   }
 
-  public void put(Message msg) {
-    put(Sha256Hash.of(msg.getData()), msg);
-  }
-
   public Message get(Sha256Hash msgId) {
     try (ALock l = readLock.lock()) {
       return storage.get(msgId);
     }
+  }
+  
+  public void put(Message msg) {
+    put(Sha256Hash.of(msg.getData()), msg);
   }
 
   public void delete(Sha256Hash msgId) {
